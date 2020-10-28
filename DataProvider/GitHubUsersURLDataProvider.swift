@@ -7,12 +7,12 @@
 
 import Foundation
 
-class GitHubUsersDataProvider {
+class GitHubUsersURLDataProvider: GitHubUsersDataProvider {
     let usersFeed = "https://api.github.com/users?"
     func loadItems(page:Int, per_page:Int, completionHandler: @escaping (Data?,Error?) -> Void) {
         let urlString = "\(usersFeed)per_page=\(per_page)&page=\(page)"
         guard let jsonURL = URL(string: urlString) else {
-            completionHandler(nil, GitHubUsersDataProviderError.urlError)
+            completionHandler(nil, GitHubUsersURLDataProviderError.urlError)
             return
         }
         let session = URLSession(configuration: .default)
@@ -26,7 +26,7 @@ class GitHubUsersDataProvider {
             
             // Alert the user if no data comes back.
             guard let data = data else {
-                completionHandler(nil, GitHubUsersDataProviderError.networkUnavailable)
+                completionHandler(nil, GitHubUsersURLDataProviderError.networkUnavailable)
                 return
             }
             

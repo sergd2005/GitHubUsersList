@@ -6,6 +6,6 @@
 //
 
 import Foundation
-enum GitHubUsersStorageError: Error {
+enum GitHubUsersCoreDataStorageError: Error {
     case batchInsertError
 }

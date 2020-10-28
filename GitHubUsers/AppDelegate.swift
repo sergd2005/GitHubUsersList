@@ -14,14 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let provider = GitHubUsersDataProvider()
+        let provider = GitHubUsersURLDataProvider()
         let parser = GitHubUsersJSONParser()
-        provider.loadItems(page: 1, per_page: 30) { (data:Data?, error:Error?) in
-            if let data = data {
-                let parsedObjects = parser.parseJSONData(jsonData: data)
-                print("")
-            }
-        }
+        
         return true
     }
 

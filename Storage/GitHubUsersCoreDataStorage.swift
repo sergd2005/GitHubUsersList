@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class GitHubUsersStorage {
+class GitHubUsersCoreDataStorage: GitHubUsersStorage {
     lazy var persistentContainer: NSPersistentContainer = {
             let container = NSPersistentContainer(name: "GitHubUsersDataModel")
             container.loadPersistentStores { description, error in
@@ -59,7 +59,7 @@ class GitHubUsersStorage {
                 let success = batchInsertResult.result as? Bool, success {
                 return
             }
-            performError = GitHubUsersStorageError.batchInsertError
+            performError = GitHubUsersCoreDataStorageError.batchInsertError
         }
 
         if let error = performError {

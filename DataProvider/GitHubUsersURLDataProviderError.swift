@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum GitHubUsersDataProviderError: Error {
+enum GitHubUsersURLDataProviderError: Error {
     case urlError
     case networkUnavailable
 }

@@ -7,10 +7,9 @@
 
 import Foundation
 
-class GitHubUsersJSONParser {
-    func parseJSONData(jsonData: Data) -> [[String:Any]]? {
+class GitHubUsersJSONParser: GitHubUsersParser {
+    func parseData(jsonData: Data) -> [[String:Any]]? {
         do {
-            // Decode the JSON into codable type GeoJSON.
             let jsonRootObject = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
             var parsedObjects = Array<[String:Any]>()
             if let array = jsonRootObject as? [[String:Any]] {
@@ -25,6 +24,5 @@ class GitHubUsersJSONParser {
         } catch {
             return nil
         }
-        return nil
     }
 }

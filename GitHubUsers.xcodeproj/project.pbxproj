@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		456DB00B2549119400288941 /* GitHubUsersStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB00A2549119400288941 /* GitHubUsersStorage.swift */; };
+		456DB00B2549119400288941 /* GitHubUsersCoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB00A2549119400288941 /* GitHubUsersCoreDataStorage.swift */; };
 		456DB0142549129D00288941 /* GitHubUsersDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 456DB0122549129D00288941 /* GitHubUsersDataModel.xcdatamodeld */; };
 		456DB01D25491AC700288941 /* GitHubUsersJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB01C25491AC700288941 /* GitHubUsersJSONParser.swift */; };
-		456DB02D25491E4700288941 /* GitHubUsersStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB02C25491E4700288941 /* GitHubUsersStorageError.swift */; };
-		456DB033254934FF00288941 /* GitHubUsersDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB032254934FF00288941 /* GitHubUsersDataProvider.swift */; };
-		456DB03B2549373300288941 /* GitHubUsersDataProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB03A2549373300288941 /* GitHubUsersDataProviderError.swift */; };
+		456DB02D25491E4700288941 /* GitHubUsersCoreDataStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB02C25491E4700288941 /* GitHubUsersCoreDataStorageError.swift */; };
+		456DB033254934FF00288941 /* GitHubUsersURLDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB032254934FF00288941 /* GitHubUsersURLDataProvider.swift */; };
+		456DB03B2549373300288941 /* GitHubUsersURLDataProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB03A2549373300288941 /* GitHubUsersURLDataProviderError.swift */; };
+		456DB04125493DA500288941 /* GitHubUsersDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB04025493DA500288941 /* GitHubUsersDataCoordinator.swift */; };
+		456DB04725493E6E00288941 /* GitHubUsersStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB04625493E6E00288941 /* GitHubUsersStorage.swift */; };
+		456DB0582549400100288941 /* GitHubUsersDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB0572549400100288941 /* GitHubUsersDataProvider.swift */; };
+		45A83FA52549415E0063AC9F /* GitHubUsersParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A83FA42549415E0063AC9F /* GitHubUsersParser.swift */; };
 		45DD68F92547C813003B139E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DD68F82547C813003B139E /* AppDelegate.swift */; };
 		45DD68FB2547C813003B139E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DD68FA2547C813003B139E /* SceneDelegate.swift */; };
 		45DD68FD2547C813003B139E /* GitHubUsersListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DD68FC2547C813003B139E /* GitHubUsersListTableViewController.swift */; };
@@ -41,12 +45,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		456DB00A2549119400288941 /* GitHubUsersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersStorage.swift; sourceTree = "<group>"; };
+		456DB00A2549119400288941 /* GitHubUsersCoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersCoreDataStorage.swift; sourceTree = "<group>"; };
 		456DB0132549129D00288941 /* GitHubUsersDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GitHubUsersDataModel.xcdatamodel; sourceTree = "<group>"; };
 		456DB01C25491AC700288941 /* GitHubUsersJSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersJSONParser.swift; sourceTree = "<group>"; };
-		456DB02C25491E4700288941 /* GitHubUsersStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersStorageError.swift; sourceTree = "<group>"; };
-		456DB032254934FF00288941 /* GitHubUsersDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersDataProvider.swift; sourceTree = "<group>"; };
-		456DB03A2549373300288941 /* GitHubUsersDataProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersDataProviderError.swift; sourceTree = "<group>"; };
+		456DB02C25491E4700288941 /* GitHubUsersCoreDataStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersCoreDataStorageError.swift; sourceTree = "<group>"; };
+		456DB032254934FF00288941 /* GitHubUsersURLDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersURLDataProvider.swift; sourceTree = "<group>"; };
+		456DB03A2549373300288941 /* GitHubUsersURLDataProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersURLDataProviderError.swift; sourceTree = "<group>"; };
+		456DB04025493DA500288941 /* GitHubUsersDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersDataCoordinator.swift; sourceTree = "<group>"; };
+		456DB04625493E6E00288941 /* GitHubUsersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersStorage.swift; sourceTree = "<group>"; };
+		456DB0572549400100288941 /* GitHubUsersDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersDataProvider.swift; sourceTree = "<group>"; };
+		45A83FA42549415E0063AC9F /* GitHubUsersParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersParser.swift; sourceTree = "<group>"; };
 		45DD68F52547C813003B139E /* GitHubUsers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubUsers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45DD68F82547C813003B139E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45DD68FA2547C813003B139E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,9 +99,9 @@
 		456DB0092549114400288941 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				456DB00A2549119400288941 /* GitHubUsersStorage.swift */,
+				456DB00A2549119400288941 /* GitHubUsersCoreDataStorage.swift */,
 				456DB0122549129D00288941 /* GitHubUsersDataModel.xcdatamodeld */,
-				456DB02C25491E4700288941 /* GitHubUsersStorageError.swift */,
+				456DB02C25491E4700288941 /* GitHubUsersCoreDataStorageError.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -109,15 +117,35 @@
 		456DB031254934D900288941 /* DataProvider */ = {
 			isa = PBXGroup;
 			children = (
-				456DB032254934FF00288941 /* GitHubUsersDataProvider.swift */,
-				456DB03A2549373300288941 /* GitHubUsersDataProviderError.swift */,
+				456DB032254934FF00288941 /* GitHubUsersURLDataProvider.swift */,
+				456DB03A2549373300288941 /* GitHubUsersURLDataProviderError.swift */,
 			);
 			path = DataProvider;
+			sourceTree = "<group>";
+		};
+		456DB03F25493D7E00288941 /* DataCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				456DB04025493DA500288941 /* GitHubUsersDataCoordinator.swift */,
+			);
+			path = DataCoordinator;
+			sourceTree = "<group>";
+		};
+		456DB04525493E5A00288941 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				456DB04625493E6E00288941 /* GitHubUsersStorage.swift */,
+				456DB0572549400100288941 /* GitHubUsersDataProvider.swift */,
+				45A83FA42549415E0063AC9F /* GitHubUsersParser.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		45DD68EC2547C813003B139E = {
 			isa = PBXGroup;
 			children = (
+				456DB04525493E5A00288941 /* Protocols */,
+				456DB03F25493D7E00288941 /* DataCoordinator */,
 				456DB031254934D900288941 /* DataProvider */,
 				456DB01B25491AAF00288941 /* Parser */,
 				456DB0092549114400288941 /* Storage */,
@@ -301,13 +329,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				45DD68FD2547C813003B139E /* GitHubUsersListTableViewController.swift in Sources */,
-				456DB03B2549373300288941 /* GitHubUsersDataProviderError.swift in Sources */,
-				456DB00B2549119400288941 /* GitHubUsersStorage.swift in Sources */,
-				456DB033254934FF00288941 /* GitHubUsersDataProvider.swift in Sources */,
+				456DB04725493E6E00288941 /* GitHubUsersStorage.swift in Sources */,
+				456DB03B2549373300288941 /* GitHubUsersURLDataProviderError.swift in Sources */,
+				456DB04125493DA500288941 /* GitHubUsersDataCoordinator.swift in Sources */,
+				456DB00B2549119400288941 /* GitHubUsersCoreDataStorage.swift in Sources */,
+				456DB033254934FF00288941 /* GitHubUsersURLDataProvider.swift in Sources */,
+				45A83FA52549415E0063AC9F /* GitHubUsersParser.swift in Sources */,
 				456DB01D25491AC700288941 /* GitHubUsersJSONParser.swift in Sources */,
 				45DD68F92547C813003B139E /* AppDelegate.swift in Sources */,
-				456DB02D25491E4700288941 /* GitHubUsersStorageError.swift in Sources */,
+				456DB02D25491E4700288941 /* GitHubUsersCoreDataStorageError.swift in Sources */,
 				456DB0142549129D00288941 /* GitHubUsersDataModel.xcdatamodeld in Sources */,
+				456DB0582549400100288941 /* GitHubUsersDataProvider.swift in Sources */,
 				45DD68FB2547C813003B139E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
