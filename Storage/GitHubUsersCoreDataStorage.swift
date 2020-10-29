@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 class GitHubUsersCoreDataStorage: GitHubUsersStorage {
+    var fetchingContext:NSManagedObjectContext?
     lazy var persistentContainer: NSPersistentContainer = {
             let container = NSPersistentContainer(name: "GitHubUsersDataModel")
             container.loadPersistentStores { description, error in
@@ -20,7 +21,7 @@ class GitHubUsersCoreDataStorage: GitHubUsersStorage {
         }()
     
     init() {
-        
+        fetchingContext = newTaskContext()
     }
     
     private func newBatchInsertRequest(with quakeDictionaryList: [[String: Any]]) -> NSBatchInsertRequest {
@@ -74,13 +75,35 @@ class GitHubUsersCoreDataStorage: GitHubUsersStorage {
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        let taskContext = newTaskContext()
         var fetchResultTmp:[GitHubUser]?
-        taskContext.performAndWait {
-            if let fetchResult = try? taskContext.fetch(fetchRequest) as? [GitHubUser] {
-                fetchResultTmp = fetchResult
+        if let fetchingContext = fetchingContext {
+            fetchingContext.performAndWait {
+                if let fetchResult = try? fetchingContext.fetch(fetchRequest) as? [GitHubUser] {
+                    fetchResultTmp = fetchResult
+                }
             }
         }
         return fetchResultTmp
+    }
+    
+    func clean() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GitHubUser")
+        let context = newTaskContext()
+        var fetchResultTmp:[GitHubUser]?
+        context.performAndWait {
+            if let fetchResult = try? context.fetch(fetchRequest) as? [GitHubUser] {
+                fetchResultTmp = fetchResult
+            }
+        }
+        if let fetchResultTmp = fetchResultTmp {
+            for user in fetchResultTmp {
+                context.delete(user)
+            }
+        }
+        do {
+            try context.save()
+        } catch {
+            print("error during same")
+        }
     }
 }

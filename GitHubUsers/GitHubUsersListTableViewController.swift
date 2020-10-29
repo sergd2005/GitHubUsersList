@@ -39,8 +39,16 @@ class LoadMoreTableViewCell: UITableViewCell {
 class GitHubUsersListTableViewController: UITableViewController {
     let userCellReuseIdentifier = "userCellReuseIdentifier"
     let loadMoreTableViewCell = "loadMoreTableViewCell"
-    var users = Array<String>()
+    var users = Array<GitHubUser>()
     var loadMoreEnabled:Bool = true
+    var page:Int = 1
+    lazy var dataCoordinator:GitHubUsersDataCoordinator = {
+        let storage = GitHubUsersCoreDataStorage()
+        let parser = GitHubUsersJSONParser()
+        let dataProvider = GitHubUsersURLDataProvider()
+        return GitHubUsersDataCoordinator(dataProvider: dataProvider, storage: storage, parser: parser)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -59,11 +67,12 @@ class GitHubUsersListTableViewController: UITableViewController {
         var cell:UITableViewCell
         if (self.isLastCell(indexPath: indexPath) && loadMoreEnabled) {
             cell = tableView.dequeueReusableCell(withIdentifier: loadMoreTableViewCell, for: indexPath)
-            loadMore(count: 30, offset: users.count)
+            loadItems(page: page, per_page: 30)
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: userCellReuseIdentifier, for: indexPath)
             // Configure the cell’s contents.
-            cell.textLabel!.text = users[indexPath.row]
+            let user = users[indexPath.row]
+            cell.textLabel!.text = user.login
             return cell
         }
         return cell
@@ -77,14 +86,19 @@ class GitHubUsersListTableViewController: UITableViewController {
         return users.count + (loadMoreEnabled ? 1 : 0)
     }
     
-    func loadMore(count:Int, offset:Int) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            var indexPaths = Array<IndexPath>()
-            for i in offset..<(offset+count) {
-                self.users.append("\(i)")
-                indexPaths.append(IndexPath.init(row: i, section: 0))
+    func loadItems(page:Int, per_page:Int) {
+        dataCoordinator.loadItems(page: page, per_page: per_page) { (users, error) in
+            DispatchQueue.main.async {
+                if let users = users {
+                    self.users.append(contentsOf: users)
+                    var indexPaths = Array<IndexPath>()
+                    for i in ((page-1)*per_page)..<((page)*per_page) {
+                        indexPaths.append(IndexPath.init(row: i, section: 0))
+                    }
+                    self.page+=1
+                    self.tableView.insertRows(at: indexPaths, with: .automatic)
+                }
             }
-            self.tableView.insertRows(at: indexPaths, with: .automatic)
         }
     }
 }

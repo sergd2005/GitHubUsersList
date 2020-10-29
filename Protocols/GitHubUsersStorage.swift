@@ -10,4 +10,5 @@ import Foundation
 protocol GitHubUsersStorage {
     func store(gitHubUsers:[[String: Any]]) throws
     func fetch(count:Int, offset:Int) -> [GitHubUser]?
+    func clean()
 }

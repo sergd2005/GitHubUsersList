@@ -33,7 +33,6 @@ class GitHubUsersURLDataProvider: GitHubUsersDataProvider {
             completionHandler(data, nil)
         }
         // Start the task.
-        print("\(Date()) Start fetching data from server ...")
         task.resume()
         
     }
