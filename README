@@ -1,0 +1,44 @@
+In this sample app we load github users profile feed from https://api.github.com/users?per_page=20&page=1
+
+
+
+GitHubUsersListTableViewController is responsible for displaying table view with load more possibility.
+Unfortunately api doesn't return next pages (i.e. it returns same feed for page 2 3 etc) 
+
+It uses GitHubUsersDataCoordinator to load items
+
+GitHubUsersDataCoordinator is data coordinator that uses storage, dataprovider and parser and coordinates 
+them 
+It accepts protocols in it's init method to enable dependency injection that enables unit testing of it
+
+To load items from feed GitHubUsersURLDataProvider is used 
+
+To parse reponse from it GitHubUsersJSONParser is used 
+
+For persistent storage GitHubUsersCoreDataStorage is used.
+
+This implementation uses CoreData framework to persist items on disk. 
+CoreData manages storage of items , object lifecyles .
+Core Data provides an abstraction that allows developers to interact with the model layer in an object-oriented manner. Every record you interact with is an object.
+Core Data is responsible for the integrity of the object graph. It ensures the object graph is kept up to date.
+
+Beside that is it allows storing large data sets in background without affecting apps main thread. 
+GitHubUsersCoreDataStorage is using so called batched requests to store data obtained from parser
+
+Unit testing 
+
+GitHubUsersDataCoordinator is covered with essential unit tests that cover main scenarios 
+
+1) succefull load from feed of first page when network is available. In that case we also make sure storage is cleaned to refresh it
+2) succefull load from feed of first page when network is available. In that case storage should not be cleaned
+3) case when data is not returned from data provider. In that case we load items from storage. 
+
+Profile Images
+
+Profile images are not stored in CoreData instead they are stored in memory
+ImageLoader is used to load them and store in memory 
+
+Idea here is to display feed as fast as possible and allow simultaneous download of profile images while user
+scrolls feed. 
+
+ImageLoader can be improved to store images on disk for persistency but for sake of example it is not doesn
