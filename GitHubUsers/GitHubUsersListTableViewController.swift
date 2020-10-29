@@ -7,35 +7,6 @@
 
 import UIKit
 
-class LoadMoreTableViewCell: UITableViewCell {
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        initActivityIndicator()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        initActivityIndicator()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func initActivityIndicator() {
-        let activityIndicatorView = UIActivityIndicatorView.init(style: UIActivityIndicatorView.Style.medium)
-        activityIndicatorView.startAnimating()
-        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.addSubview(activityIndicatorView)
-        NSLayoutConstraint.activate([
-            activityIndicatorView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            activityIndicatorView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            activityIndicatorView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            activityIndicatorView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
-        ])
-    }
-}
-
 class GitHubUsersListTableViewController: UITableViewController {
     let userCellReuseIdentifier = "userCellReuseIdentifier"
     let loadMoreTableViewCell = "loadMoreTableViewCell"
@@ -52,7 +23,7 @@ class GitHubUsersListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier:userCellReuseIdentifier)
+        self.tableView.register(GitHubUserTableViewCell.self, forCellReuseIdentifier:userCellReuseIdentifier)
         self.tableView.register(LoadMoreTableViewCell.self, forCellReuseIdentifier:loadMoreTableViewCell)
         
     }
@@ -61,7 +32,11 @@ class GitHubUsersListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.itemsCount()
     }
-
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     // Provide a cell object for each row.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
@@ -70,9 +45,11 @@ class GitHubUsersListTableViewController: UITableViewController {
             loadItems(page: page, per_page: 30)
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: userCellReuseIdentifier, for: indexPath)
-            // Configure the cell’s contents.
-            let user = users[indexPath.row]
-            cell.textLabel!.text = user.login
+            if let userProfileCell = cell as? GitHubUserTableViewCell{
+                // Configure the cell’s contents.
+                let user = users[indexPath.row]
+                userProfileCell.loginLabel.text = user.login
+            }
             return cell
         }
         return cell

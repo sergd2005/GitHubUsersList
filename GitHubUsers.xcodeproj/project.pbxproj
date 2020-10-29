@@ -17,6 +17,8 @@
 		456DB04725493E6E00288941 /* GitHubUsersStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB04625493E6E00288941 /* GitHubUsersStorage.swift */; };
 		456DB0582549400100288941 /* GitHubUsersDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DB0572549400100288941 /* GitHubUsersDataProvider.swift */; };
 		45A83FA52549415E0063AC9F /* GitHubUsersParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A83FA42549415E0063AC9F /* GitHubUsersParser.swift */; };
+		45A83FAA254A57650063AC9F /* LoadMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A83FA9254A57650063AC9F /* LoadMoreTableViewCell.swift */; };
+		45A83FAF254A668A0063AC9F /* GitHubUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A83FAE254A668A0063AC9F /* GitHubUserTableViewCell.swift */; };
 		45DD68F92547C813003B139E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DD68F82547C813003B139E /* AppDelegate.swift */; };
 		45DD68FB2547C813003B139E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DD68FA2547C813003B139E /* SceneDelegate.swift */; };
 		45DD68FD2547C813003B139E /* GitHubUsersListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DD68FC2547C813003B139E /* GitHubUsersListTableViewController.swift */; };
@@ -55,6 +57,8 @@
 		456DB04625493E6E00288941 /* GitHubUsersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersStorage.swift; sourceTree = "<group>"; };
 		456DB0572549400100288941 /* GitHubUsersDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersDataProvider.swift; sourceTree = "<group>"; };
 		45A83FA42549415E0063AC9F /* GitHubUsersParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsersParser.swift; sourceTree = "<group>"; };
+		45A83FA9254A57650063AC9F /* LoadMoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreTableViewCell.swift; sourceTree = "<group>"; };
+		45A83FAE254A668A0063AC9F /* GitHubUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUserTableViewCell.swift; sourceTree = "<group>"; };
 		45DD68F52547C813003B139E /* GitHubUsers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubUsers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45DD68F82547C813003B139E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45DD68FA2547C813003B139E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 				45DD69012547C81A003B139E /* Assets.xcassets */,
 				45DD69032547C81A003B139E /* LaunchScreen.storyboard */,
 				45DD69062547C81A003B139E /* Info.plist */,
+				45A83FA9254A57650063AC9F /* LoadMoreTableViewCell.swift */,
+				45A83FAE254A668A0063AC9F /* GitHubUserTableViewCell.swift */,
 			);
 			path = GitHubUsers;
 			sourceTree = "<group>";
@@ -333,6 +339,7 @@
 				456DB03B2549373300288941 /* GitHubUsersURLDataProviderError.swift in Sources */,
 				456DB04125493DA500288941 /* GitHubUsersDataCoordinator.swift in Sources */,
 				456DB00B2549119400288941 /* GitHubUsersCoreDataStorage.swift in Sources */,
+				45A83FAF254A668A0063AC9F /* GitHubUserTableViewCell.swift in Sources */,
 				456DB033254934FF00288941 /* GitHubUsersURLDataProvider.swift in Sources */,
 				45A83FA52549415E0063AC9F /* GitHubUsersParser.swift in Sources */,
 				456DB01D25491AC700288941 /* GitHubUsersJSONParser.swift in Sources */,
@@ -340,6 +347,7 @@
 				456DB02D25491E4700288941 /* GitHubUsersCoreDataStorageError.swift in Sources */,
 				456DB0142549129D00288941 /* GitHubUsersDataModel.xcdatamodeld in Sources */,
 				456DB0582549400100288941 /* GitHubUsersDataProvider.swift in Sources */,
+				45A83FAA254A57650063AC9F /* LoadMoreTableViewCell.swift in Sources */,
 				45DD68FB2547C813003B139E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
