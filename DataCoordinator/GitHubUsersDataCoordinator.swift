@@ -19,8 +19,16 @@ class GitHubUsersDataCoordinator {
     func loadItems(page:Int, per_page:Int, completionHandler: @escaping ([GitHubUser]?,Error?) -> Void) {
         _dataProvider.loadItems(page: page, per_page: per_page) { (data:Data?, error:Error?) in
             if let data = data {
-                let parsedObjects = self._parser.parseData(jsonData: data)
+                if let parsedObjects = self._parser.parseData(jsonData: data) {
+                    do {
+                        try self._storage.store(gitHubUsers: parsedObjects)
+                    } catch {
+                        
+                    }
+                }
             }
+            let users = self._storage.fetch(count: per_page, offset: (page - 1) * per_page)
+            completionHandler(users, nil)
         }
     }
 }
