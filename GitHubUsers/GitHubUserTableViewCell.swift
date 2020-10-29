@@ -10,6 +10,7 @@ import UIKit
 class GitHubUserTableViewCell : UITableViewCell {
     var profileImageView: UIImageView
     var loginLabel : UILabel
+    var onReuse: () -> Void = {}
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         profileImageView = UIImageView()
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +27,9 @@ class GitHubUserTableViewCell : UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         initViews()
+        onReuse()
+        profileImageView.image = nil
+        loginLabel.text = nil
     }
     
     func initViews() {

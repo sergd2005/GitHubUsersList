@@ -10,9 +10,11 @@ import UIKit
 class GitHubUsersListTableViewController: UITableViewController {
     let userCellReuseIdentifier = "userCellReuseIdentifier"
     let loadMoreTableViewCell = "loadMoreTableViewCell"
+    let imageLoader = ImageLoader()
     var users = Array<GitHubUser>()
     var loadMoreEnabled:Bool = true
     var page:Int = 1
+    
     lazy var dataCoordinator:GitHubUsersDataCoordinator = {
         let storage = GitHubUsersCoreDataStorage()
         let parser = GitHubUsersJSONParser()
@@ -49,6 +51,7 @@ class GitHubUsersListTableViewController: UITableViewController {
                 // Configure the cell’s contents.
                 let user = users[indexPath.row]
                 userProfileCell.loginLabel.text = user.login
+                loadProfileImage(forUser: user, cell: userProfileCell)
             }
             return cell
         }
@@ -76,6 +79,28 @@ class GitHubUsersListTableViewController: UITableViewController {
                     self.tableView.insertRows(at: indexPaths, with: .automatic)
                 }
             }
+        }
+    }
+    
+    func loadProfileImage(forUser user:GitHubUser, cell:GitHubUserTableViewCell) {
+        guard let avatar_url = user.avatar_url,
+              let imageURL = NSURL(string: avatar_url) else {
+            return
+        }
+        let token = imageLoader.loadImage(imageURL as URL) { result in
+          do {
+            let image = try result.get()
+            DispatchQueue.main.async {
+              cell.profileImageView.image = image
+            }
+          } catch {
+            print(error)
+          }
+        }
+        cell.onReuse = {
+          if let token = token {
+            self.imageLoader.cancelLoad(token)
+          }
         }
     }
 }
